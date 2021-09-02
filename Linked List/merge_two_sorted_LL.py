@@ -85,21 +85,49 @@ class LinkedList:
             print(temp.data)
             temp=temp.next
 
+def merLinkedList(linkedlist1,linkedlist2,mergelist):
+    currentFirst=linkedlist1.head
+    currentSecond=linkedlist2.head
+    while True:
+        if currentFirst is None:
+            mergelist.insert(currentSecond)
+            break
+        if currentSecond is None:
+            mergelist.insert(currentFirst)
+            break
+        if currentFirst.data<currentSecond.data:
+            currentFirstNext=currentFirst.next
+            currentFirst.next=None
+            mergelist.insert(currentFirst)
+            currentFirst=currentFirstNext
+        else:
+            currentSecondNext=currentSecond.next
+            currentSecond.next=None
+            mergelist.insert(currentSecond)
+            currentSecond=currentSecondNext
 
-firstNode=Node("Dikshant")
-linkedList=LinkedList()
-linkedList.insert(firstNode)
-firstNode=Node("aman")
 
-linkedList.insert(firstNode)
-firstNode=Node("ritik")
-linkedList.insert(firstNode)
-firstNode=Node("xyz")
-linkedList.insertAtHead(firstNode)
-firstNode=Node("xyz1")
-linkedList.insertAtHead(firstNode)
-firstNode=Node("xyz2")
-linkedList.insertbetween(firstNode,1)
-linkedList.deletenode(2)
-linkedList.printlist()
 
+linkedList1=LinkedList()
+linkedList2=LinkedList()
+item=Node(1)
+linkedList1.insert(item)
+item=Node(2)
+linkedList1.insert(item)
+item=Node(3)
+linkedList1.insert(item)
+item=Node(4)
+linkedList1.insert(item)
+
+item=Node(3)
+linkedList2.insert(item)
+item=Node(5)
+linkedList2.insert(item)
+item=Node(7)
+linkedList2.insert(item)
+item=Node(9)
+linkedList2.insert(item)
+
+mergelist=LinkedList()
+merLinkedList(linkedList1,linkedList2,mergelist)
+mergelist.printlist()

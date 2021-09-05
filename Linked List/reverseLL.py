@@ -2,7 +2,6 @@ class Node:
     def __init__(self,data):
         self.data=data
         self.next=None
-    
 class LinkedList:
     def __init__(self):
         self.head=None
@@ -77,30 +76,50 @@ class LinkedList:
             prevNode=currNode
             currNode=currNode.next
             currPos+=1
+    def reverse(self):
+            # currNode=self.head
+            # firstNode=currNode
+            # firstNode.next=None
+            # while True:
+            #     if currNode.next==None:
+            #         while True:
+
+            #             self.head=currNode
+            #             self.head.next=prevNode
+            #             break
+            #     prevNode=currNode
+            #     currNode=currNode.next
+            previousptr=None
+            currptr=self.head
+            nextptr=currptr.next
+            
+            while nextptr.next!=None:
+                
+                currptr.next=previousptr
+                previousptr=currptr
+                currptr=nextptr
+                nextptr=nextptr.next
+            self.head=currptr 
+    def recusiveReverse(self):
+        if self.head==None :
+            return 
+        newhead=recusiveReverse()
+        self.head.next=self.head
+        self.head.next=None
+
     def printlist(self):
         temp=self.head
         while True:
             if temp is None:
                 break
-            print(temp.data,end="->")
+            print(temp.data)
             temp=temp.next
-        print("NULL")
-
-
-firstNode=Node("Dikshant")
+node=Node(10)
 linkedList=LinkedList()
-linkedList.insert(firstNode)
-firstNode=Node("aman")
-
-linkedList.insert(firstNode)
-firstNode=Node("ritik")
-linkedList.insert(firstNode)
-firstNode=Node("xyz")
-linkedList.insertAtHead(firstNode)
-firstNode=Node("xyz1")
-linkedList.insertAtHead(firstNode)
-firstNode=Node("xyz2")
-linkedList.insertbetween(firstNode,1)
-linkedList.deletenode(2)
-# linkedList.printlist()
-
+linkedList.insert(node)
+node=Node(20)
+linkedList.insert(node)
+node=Node(30)
+linkedList.insert(node)
+linkedList.recusiveReverse()
+linkedList.printlist()

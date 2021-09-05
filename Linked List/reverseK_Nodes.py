@@ -1,16 +1,21 @@
 from linkedlist import Node,LinkedList
-def reverse_node(linkedList,k):
+def reverse_node(head,k):
+    if head==None:
+        return None
     prev=None
-    current=linkedList.head
+    current=head
+    next=None
     count=0
     while current!=None and count<=k:
-        nextptr = current.next
+        next = current.next
         current.next=prev
         prev=current
-        current=nextptr
+        current=next
         count=count+1
+    if next !=None:
+        head.next=reverse_node(next,k)
 
-    reverse_node()
+    return prev
 
 
 
@@ -27,6 +32,7 @@ linkedList.insert(nodeThree)
 linkedList.insert(nodefour)
 linkedList.insert(nodeFive)
 linkedList.insert(nodeSix)
+# linkedList.printlist()
+k=2
+linkedList.head=reverse_node(linkedList.head,k)
 linkedList.printlist()
-k=3
-reverse_node(linkedlist,k)

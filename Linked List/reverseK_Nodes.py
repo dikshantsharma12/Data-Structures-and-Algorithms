@@ -5,7 +5,7 @@ def reverse_node(head,k):
     prev=None
     current=head
     next=None
-    count=0
+    count=1
     while current!=None and count<=k:
         next = current.next
         current.next=prev
@@ -32,7 +32,7 @@ linkedList.insert(nodeThree)
 linkedList.insert(nodefour)
 linkedList.insert(nodeFive)
 linkedList.insert(nodeSix)
-# linkedList.printlist()
+linkedList.printlist()
 k=2
 linkedList.head=reverse_node(linkedList.head,k)
 linkedList.printlist()
